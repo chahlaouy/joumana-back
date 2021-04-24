@@ -109,6 +109,9 @@ Member.prototype.updateMemberById = (req, res) => {
       type: req.body.type,
       codeStructure: req.body.codeStructure,
       codeCommission: req.body.codeCommission,
+      gouvernerat: req.body.gouvernerat,
+      delegation: req.body.delegation,
+
     },
     (err, result) => {
       if (err) {
