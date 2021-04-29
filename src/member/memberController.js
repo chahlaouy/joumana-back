@@ -111,6 +111,7 @@ Member.prototype.updateMemberById = (req, res) => {
       codeCommission: req.body.codeCommission,
       gouvernerat: req.body.gouvernerat,
       delegation: req.body.delegation,
+      birthDate: req.body.birthDate,
 
     },
     (err, result) => {
