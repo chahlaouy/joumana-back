@@ -51,6 +51,20 @@ console.log("model ", model);
     })
 }
 
+
+Structer.prototype.getStructerById = (req, res) => {
+    const search = req.params.id ;
+    console.log(search)
+    structerModel.find({ 
+      $or: [{CodeStruct: { $regex: '.*' + search, $options: 'i' }}, {DelegStruct: { $regex: '.*' + search, $options: 'i' }}, {GouvStruct: { $regex: '.*' + search, $options: 'i' }}, {TypeStruct: { $regex: '.*' + search, $options: 'i' }}, {MatriFisc: { $regex: '.*' + search, $options: 'i' }}, {Numccptebq: { $regex: '.*' + search, $options: 'i' }}, {CodePresident: { $regex: '.*' + search, $options: 'i' }}, {CodeVicePresident: { $regex: '.*' + search, $options: 'i' }}, {nomPresident: { $regex: '.*' + search, $options: 'i' }}],
+      }, (err, result) => {
+        if (err) {
+          res.send(err);
+        } else {
+          res.send(result);}
+      })
+  };
+
 Structer.prototype.updateStructerById = (req,res) => {
     let id = req.body._id;
     structerModel.findByIdAndUpdate(id,{ 
@@ -72,6 +86,7 @@ Structer.prototype.updateStructerById = (req,res) => {
         nomTresor: req.body.nomTresor,
         nomVice: req.body.nomVice,
         TypeStruct: req.body.TypeStruct,
+        SectorStruct: req.body.SectorStruct
     },
         (err,result) => {
         if(err){

@@ -21,6 +21,7 @@ let structerSchema = new Schema({
     nomDirEx: {type:String, default : null},
     nomTresor: {type:String, default : null},
     nomMembreBureau: {type:String, default : null},
+    SectorStruct: {type:String, default : null},
 },{timestamps : true
 });
 

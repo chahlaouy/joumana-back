@@ -30,14 +30,16 @@ Member.prototype.getMembers = (req, res) => {
 };
 
 Member.prototype.getMemberById = (req, res) => {
-  let id = req.params.id;
-  memberModel.findById(id, (err, result) => {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(result);
-    }
-  });
+  const search = req.params.id ;
+  console.log(search)
+  memberModel.find({ 
+    $or: [{firstName: { $regex: '.*' + search, $options: 'i' }}, {telephone: { $regex: '.*' + search, $options: 'i' }}, {lastName: { $regex: '.*' + search, $options: 'i' }}, {secteur: { $regex: '.*' + search, $options: 'i' }}, {nationality: { $regex: '.*' + search, $options: 'i' }}, {cin: { $regex: '.*' + search, $options: 'i' }}, {codeStructure: { $regex: '.*' + search, $options: 'i' }}, {email: { $regex: '.*' + search, $options: 'i' }}, {gouvernerat: { $regex: '.*' + search, $options: 'i' }}, {delegation: { $regex: '.*' + search, $options: 'i' }}, {sexe: { $regex: '.*' + search, $options: 'i' }}, {profession: { $regex: '.*' + search, $options: 'i' }}],
+    }, (err, result) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(result);}
+    })
 };
 
 Member.prototype.getMemberByCustomId = (req, res) => {
@@ -112,6 +114,11 @@ Member.prototype.updateMemberById = (req, res) => {
       gouvernerat: req.body.gouvernerat,
       delegation: req.body.delegation,
       birthDate: req.body.birthDate,
+      nationality: req.body.nationality,
+      cin: req.body.cin,
+      birthPlace : req.body.birthPlace,
+      joiningDate: req.body.joiningDate,
+      observation : req.body.observation,
 
     },
     (err, result) => {

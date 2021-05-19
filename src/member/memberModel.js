@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 let memberSchema = new Schema({
+    codeMember: {type:String, default : null},
     firstName : {type:String, default : null},
     lastName : {type:String, default : null},
     profession : {type:String, default : null},
@@ -26,6 +27,6 @@ let memberSchema = new Schema({
 },{timestamps : true
 });
 
-memberSchema.plugin(AutoIncrement, {inc_field: 'codeMember'});
+// memberSchema.plugin(AutoIncrement, {inc_field: 'codeMember'});
 const member = mongoose.model('member', memberSchema);
 module.exports = member;
