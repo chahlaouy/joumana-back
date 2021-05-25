@@ -30,7 +30,7 @@ Member.prototype.getMembers = (req, res) => {
 };
 
 Member.prototype.getMemberById = (req, res) => {
-  const search = req.params.id ;
+  const search = req.params.id;
   console.log(search)
   memberModel.find({ 
     $or: [{firstName: { $regex: '.*' + search, $options: 'i' }}, {telephone: { $regex: '.*' + search, $options: 'i' }}, {lastName: { $regex: '.*' + search, $options: 'i' }}, {secteur: { $regex: '.*' + search, $options: 'i' }}, {nationality: { $regex: '.*' + search, $options: 'i' }}, {cin: { $regex: '.*' + search, $options: 'i' }}, {codeStructure: { $regex: '.*' + search, $options: 'i' }}, {email: { $regex: '.*' + search, $options: 'i' }}, {gouvernerat: { $regex: '.*' + search, $options: 'i' }}, {delegation: { $regex: '.*' + search, $options: 'i' }}, {sexe: { $regex: '.*' + search, $options: 'i' }}, {profession: { $regex: '.*' + search, $options: 'i' }}],
@@ -121,6 +121,7 @@ Member.prototype.updateMemberById = (req, res) => {
       observation : req.body.observation,
 
     },
+
     (err, result) => {
       if (err) {
         res.send(err);
